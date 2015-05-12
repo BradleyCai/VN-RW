@@ -8,14 +8,9 @@ open projects built by artists. This program will work in a variety of multiple 
 MacOS, and Linux. 
 
 There will be a way to create vn's in an easier and more user friendly way but
-for now, to create VN-RW readable VNC(Visual Novel Code) use the documentation here: 
+for now, to create VN-RW readable VNC(Visual Novel Code) use the documentation [here](https://docs.google.com/document/d/12gLGcnaq5fAESRVK-VeoAwwO_Xqbdti6EL8kpePUJw8/edit?usp=sharing)	
 
-	https://docs.google.com/document/d/12gLGcnaq5fAESRVK-VeoAwwO_Xqbdti6EL8kpePUJw8/edit?usp=sharing
-
-To see our current progress check here:
-
-	https://docs.google.com/document/d/18TpsENcrL13fac2HSvS95iqnkmrzhhEreaxVO4QIf5E/edit
-
+To see our current progress check [here](https://docs.google.com/document/d/18TpsENcrL13fac2HSvS95iqnkmrzhhEreaxVO4QIf5E/edit)
 
 -Bradley Cai, Terry Kim, & Ryan Irwin
 
