@@ -7,6 +7,11 @@ fully functional standard visual novel reader, and writer that will be able to m
 open projects built by artists. This program will work in a variety of multiple platforms including Windows,
 MacOS, and Linux. 
 
+# Dependancies
+VN-RW currently uses the following libraries outside of the standard library:
+    chnutil
+    
+# Documentation
 There will be a way to create vn's in an easier and more user friendly way but
 for now, to create VN-RW readable VNC(Visual Novel Code) use the documentation [here](https://docs.google.com/document/d/12gLGcnaq5fAESRVK-VeoAwwO_Xqbdti6EL8kpePUJw8/edit?usp=sharing)	
 
