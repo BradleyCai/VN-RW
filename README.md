@@ -12,6 +12,8 @@ VN-RW currently uses the following libraries outside of the standard library:
     chnutil
     
 # Documentation
+To see the javadocs for this project look [here](http://bradleycai.github.io/VN-RW/doc/index.html)
+
 There will be a way to create vn's in an easier and more user friendly way but
 for now, to create VN-RW readable VNC(Visual Novel Code) use the documentation [here](https://docs.google.com/document/d/12gLGcnaq5fAESRVK-VeoAwwO_Xqbdti6EL8kpePUJw8/edit?usp=sharing)	
 
