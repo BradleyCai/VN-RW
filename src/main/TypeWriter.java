@@ -13,7 +13,8 @@ public class TypeWriter {
 			System.out.print(text.substring(i, i+1));
 			try {
 			    Thread.sleep(ms);
-			} catch (InterruptedException e) {
+			} 
+			catch (InterruptedException e) {
 			    e.printStackTrace();
 			    Thread.currentThread().interrupt();
 			}
@@ -28,7 +29,8 @@ public class TypeWriter {
 	public static void wait(int ms) {
 		try {
 		    Thread.sleep(ms);
-		} catch (InterruptedException e) {
+		} 
+		catch (InterruptedException e) {
 		    e.printStackTrace();
 		    Thread.currentThread().interrupt();
 		}
