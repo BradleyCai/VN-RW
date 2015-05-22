@@ -9,7 +9,10 @@ MacOS, and Linux.
 
 # Dependancies
 VN-RW currently uses the following libraries outside of the standard library:
-    chnutil
+    
+    - chnutil
+    - Slick2D
+    - LWJGL
     
 # Documentation
 To see the javadocs for this project look [here](http://bradleycai.github.io/VN-RW/doc/index.html)
