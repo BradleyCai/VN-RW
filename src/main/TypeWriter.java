@@ -1,5 +1,11 @@
 package main;
 
+/**
+ * Prints text to the console like a typewriter
+ * 
+ * @author Bradley
+ *
+ */
 public class TypeWriter {
 	/**
 	 * Prints text using a typewriter effect

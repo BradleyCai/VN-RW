@@ -9,6 +9,12 @@ import javax.sound.sampled.UnsupportedAudioFileException;
 import java.io.File;
 import java.io.IOException;
 
+/**
+ * Play sounds with this VNSound tool
+ * 
+ * @author Bradley
+ *
+ */
 public class VNSound {
 	protected Clip clip;
 	protected boolean isLoop = false;
