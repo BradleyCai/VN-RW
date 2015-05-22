@@ -14,7 +14,6 @@ public class TypeWriter {
 	 * @param ms - Milliseconds between each letter
 	 */
 	public static void print(String text, int ms) {
-		
 		for(int i = 0; i < text.length(); i++) {
 			System.out.print(text.substring(i, i+1));
 			try {

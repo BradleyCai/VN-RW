@@ -16,6 +16,7 @@ public class VNDir {
 	protected ConsoleIO keyboard = new ConsoleIO();
 	protected File book, config;
 	protected String dir;
+	private final boolean USE_EXAMPLE = true;
 	
 	/**
 	 * Constructor, will instantiate with config and book file. If book.txt is missing 
@@ -23,21 +24,19 @@ public class VNDir {
 	 */
 	public VNDir(){
 		dir = System.getProperty("user.dir");
-
-		if(dir.contains("\\"))
-			dir = dir + "\\"; 
-		else
-			dir = dir + "/"; 
+		addSlash(dir);
+		
+		//If true, then it'll use the example visual provided
+		if(USE_EXAMPLE)
+			dir = addSlash(System.getProperty("user.dir")) + addSlash("ExampleVN");
 		
 		//Block for getting the book.txt 
 		book = new File(dir + "book.txt");
 		while(!book.canRead()) {
-			System.out.println("Book not found, please provide a folder of the visual novel");
+			System.out.println("Book not found in current directory, please provide the folder of the visual novel you wish to read");
 			System.out.print("Directory: ");
 			dir = keyboard.readToken();
-				if(!dir.substring(dir.length() - 1, dir.length()).equals("/"))
-					dir = dir + "/";
-			book = new File(dir + "book.txt");
+			book = new File(addSlash(dir) + "book.txt");
 		}
 		
 		//Block for getting the config.txt
@@ -47,12 +46,26 @@ public class VNDir {
 			try {
 				config.createNewFile();
 			} catch (IOException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		}
 		
-		System.out.println("Visual novel successfully loaded");
+		System.out.println("Visual novel successfully loaded at " + dir);
+	}
+	
+	/**
+	 * Will add your directory with it's appropriate slash (/ or \)
+	 * 
+	 * @param dir - String to be added to
+	 * @return Your directory string with its appropriate slash, if a
+	 */
+	public static String addSlash(String dir) {
+		if(dir.contains("\\"))
+			return dir + "\\";
+		else if(dir.contains("/"))
+			return dir + "/"; 
+		else
+			return dir + addSlash(System.getProperty("user.dir")).substring(System.getProperty("user.dir").length(), System.getProperty("user.dir").length() + 1);
 	}
 	
 	/**
@@ -71,5 +84,14 @@ public class VNDir {
 	 */
 	public File getConfig() {
 		return config;
+	}
+	
+	/**
+	 * Returns the working directory
+	 * 
+	 * @return the working directory
+	 */
+	public String getWorkingDir() {
+		return addSlash(book.getParent());
 	}
 }
