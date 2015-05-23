@@ -1,5 +1,8 @@
+#Eclipse
+*.project
+
 #Libraries/Dependancies are listed in the README.md
-.classpath
+*.classpath
 
 #Just testing things~
 Tester.java
