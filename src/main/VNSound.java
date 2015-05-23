@@ -18,6 +18,7 @@ import java.io.IOException;
 public class VNSound {
 	protected Clip clip;
 	protected boolean isLoop = false;
+	protected AudioInputStream audio;
 	
 	/**
 	 * Constructor that starts off the VNSound tool with a sound. Will not loop
@@ -26,10 +27,9 @@ public class VNSound {
 	 */
 	public VNSound(File file) {
 		try {
-            AudioInputStream audio = AudioSystem.getAudioInputStream(file); 
+            audio = AudioSystem.getAudioInputStream(file); 
             clip = AudioSystem.getClip();
             clip.open(audio);
-            isLoop = false;
             clip.start();
         }
         catch(UnsupportedAudioFileException uae) {
@@ -51,13 +51,13 @@ public class VNSound {
 	 */
 	public VNSound(File file, boolean loop) {
 		try {
-            AudioInputStream audio = AudioSystem.getAudioInputStream(file); 
+			isLoop = loop;
+            audio = AudioSystem.getAudioInputStream(file); 
             clip = AudioSystem.getClip();
             clip.open(audio);
-            isLoop = loop;
+            clip.start();
             if(isLoop)
             	clip.loop(Clip.LOOP_CONTINUOUSLY);
-            clip.start();
         }
         catch(UnsupportedAudioFileException uae) {
             System.out.println(uae);
@@ -68,6 +68,18 @@ public class VNSound {
         catch(LineUnavailableException lua) {
             System.out.println(lua);
         }
+		System.out.println(isLoop);
+	}
+	
+	/**
+	 * A constructor for those who dont want open any sound and just have a VNSound tool nearby to use.
+	 */
+	public VNSound() {
+		try {
+			clip = AudioSystem.getClip();
+		} catch (LineUnavailableException lue) {
+			lue.printStackTrace();
+		}
 	}
 	
 	/**
@@ -76,21 +88,23 @@ public class VNSound {
 	 * @param file - the file path and name of the audio to play
 	 */
 	public void open(File file) {
-		clip.close();
 		try {
-            AudioInputStream audio = AudioSystem.getAudioInputStream(file);
+			clip.stop();
+            clip.close();
+            audio = AudioSystem.getAudioInputStream(file);
             clip.open(audio);
+            clip.start();
             if(isLoop)
             	clip.loop(Clip.LOOP_CONTINUOUSLY);
             else
             	clip.loop(0);
-            clip.start();
         }
         catch(UnsupportedAudioFileException uae) {
             System.out.println(uae);
         }
         catch(IOException ioe) {
             System.out.println(ioe);
+            System.out.println(file);
         }
         catch(LineUnavailableException lua) {
             System.out.println(lua);
