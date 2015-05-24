@@ -33,8 +33,9 @@ public class VNReader extends BasicGameState {
 	
 	public void render(GameContainer gc, StateBasedGame sbg, Graphics g) throws SlickException {
 		if(input.isMouseButtonDown(0)) {}
-		else 
+		else{
 			g.drawImage(bg, 0, 0);
+		}
 	}
 	
 	public void update(GameContainer gc, StateBasedGame sbg, int delta) throws SlickException {
