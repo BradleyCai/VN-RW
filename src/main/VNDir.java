@@ -68,13 +68,25 @@ public class VNDir {
 			return dir + addSlash(System.getProperty("user.dir")).substring(System.getProperty("user.dir").length(), System.getProperty("user.dir").length() + 1);
 	}
 	
+	public int[] configure() {
+		int[] res = new int[1];
+		//FileInput input = new FileInput(config.getAbsolutePath());
+		
+		//if(input.readToken().equals("fps"))
+			//res[0] = input.readInt();
+		//else
+			res[0] = 60;
+		
+		return res;
+	}
+	
 	/**
 	 * Returns pathname of book
 	 * 
 	 * @return book File object
 	 */
-	public File getBook() {
-		return book;
+	public String getBook() {
+		return book.getAbsolutePath();
 	}
 	
 	/**
@@ -82,8 +94,8 @@ public class VNDir {
 	 * 
 	 * @return config File object
 	 */
-	public File getConfig() {
-		return config;
+	public String getConfig() {
+		return config.getAbsolutePath();
 	}
 	
 	/**
