@@ -47,4 +47,4 @@ Written and conceived by Bradley Cai and Terry Kim.
 License
 -------
 
-MIT License: Do what ever you want with the code. This project was intended for public use and for personal learning and enjoyment.
+MIT License: Do what ever you want with the code. This project is intended for public use and for personal learning and enjoyment.
