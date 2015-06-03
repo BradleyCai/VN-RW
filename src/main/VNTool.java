@@ -6,7 +6,10 @@ import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Image;
 import org.newdawn.slick.SlickException;
+import org.newdawn.slick.geom.Rectangle;
 import org.newdawn.slick.state.StateBasedGame;
+import org.newdawn.slick.fills.GradientFill;
+import org.newdawn.slick.Color;
 
 import chn.util.FileInput;
 
@@ -17,19 +20,40 @@ import chn.util.FileInput;
  *
  */
 public class VNTool {
+	// Slick graphics things
 	protected GameContainer gc;
 	protected StateBasedGame sbg;
-	protected VNDir myDir = new VNDir();
 
-	protected int i = 0;
-	protected boolean loaded = false;
+	// Path name and files
+	protected VNDir myDir = new VNDir();
 	protected String pathName = myDir.getBook();
 	protected FileInput file = new FileInput(pathName);
+
+	// Graphics and sound
 	protected VNSound mySound;
 	protected VNSound bgSound;
 	protected Image bgImage;
 	protected Image image;
 
+	/* For class use */
+	protected int i = 0; // The current character the VNTool is on
+	protected boolean loaded = false; // Whether the not the commands up until
+										// the "dialog" command are loaded
+	protected Color transparentGrey = new Color(240, 240, 240, 200);
+
+	/**
+	 * Constructor for VNTool. Will take the GameContainer, StateBasedGame, and
+	 * VNSound classes from where ever it's called and initialize them.
+	 * 
+	 * @param gameC
+	 *            - Game container object from slick
+	 * @param stateBG
+	 *            - State based game object from slick
+	 * @param sound
+	 *            - VNSound class for holding etc sounds other than the bg music
+	 * @param bg
+	 *            - VNSound class specifically for holding the bg music
+	 */
 	public VNTool(GameContainer gameC, StateBasedGame stateBG, VNSound sound,
 			VNSound bg) {
 		gc = gameC;
@@ -56,7 +80,9 @@ public class VNTool {
 					String path = this.getStringArg(line, fileI);
 					fileI = fileI + this.getStringArg(line, fileI).length();
 					bgSound.open(new File(path), this.getIntArg(line, fileI));
-					fileI = fileI + String.valueOf(this.getIntArg(line, fileI)).length();
+					fileI = fileI
+							+ String.valueOf(this.getIntArg(line, fileI))
+									.length();
 				}
 				// g.drawImage(new Image(line.substring(line.indexOf('(', fileI)
 				// + 1, line.indexOf(',', fileI))), gc.getWidth()/2,
@@ -114,28 +140,28 @@ public class VNTool {
 			if ((newIndex < index) && (newIndex != -1))
 				index = newIndex;
 		}
-		
+
 		return Integer.parseInt(str.substring(index, str.indexOf(',', index)));
 	}
 
 	public int getNextIndex(String str, int index) {
 		int temp = -1;
-		//Slash
+		// Slash
 		int resIndex = str.indexOf('\\', index + 1);
-		
-		//Comma
+
+		// Comma
 		temp = str.indexOf(',', index + 1);
-		if((temp < resIndex) && (temp != -1))
+		if ((temp < resIndex) && (temp != -1))
 			resIndex = temp;
-		
-		//Parenthesis
+
+		// Parenthesis
 		temp = str.indexOf('(', index + 1);
-		if((temp < resIndex) && (temp != 1))
+		if ((temp < resIndex) && (temp != 1))
 			resIndex = temp;
-		
+
 		return resIndex + 1;
 	}
-	
+
 	/**
 	 * Will display a string to the window, character by character. To reset,
 	 * make i = 0.
@@ -147,15 +173,16 @@ public class VNTool {
 	 * @param g
 	 *            - The graphics windows to display the String to
 	 */
-	public void displayString(String text, int lineLen, Graphics g) {
+	public void drawString(String text, int lineLen, Graphics g) {
 		if (i < text.length()) {
 			int line = 0;
 			for (int k = 1; k <= i; k++) {
 				if (k % lineLen == 0) {
 					line++;
 				}
-				g.drawString(text.substring(k - 1, k), (k - 1) % lineLen * 10,
-						line * 20);
+				// TODO Implement
+				g.drawString(text.substring(k - 1, k),
+						((k - 1) % lineLen * 10) + 30, line * 20 + 475);
 			}
 		} else {
 			int line = 0;
@@ -163,11 +190,25 @@ public class VNTool {
 				if (k % lineLen == 0) {
 					line++;
 				}
-				g.drawString(text.substring(k - 1, k), (k - 1) % lineLen * 10,
-						line * 20);
+				g.drawString(text.substring(k - 1, k),
+						((k - 1) % lineLen * 10) + 30, line * 20 + 475);
 			}
 		}
 		i++;
+	}
+
+	public void drawDialogBox(Graphics g) {
+		// x: 20 y: 470 width: 960 height: 640 - 470
+		// g.drawRect(20, 470, 960, 170);
+		g.fill(new Rectangle(20, 470, 960, 170), new GradientFill(20f, 470f,
+				transparentGrey, 980f, 660f,
+				transparentGrey));
+
+	}
+
+	public void drawDialog(String text, int lineLen, Graphics g) {
+		this.drawDialogBox(g);
+		this.drawString(text, lineLen, g);
 	}
 
 	public void clear(Graphics g) {
