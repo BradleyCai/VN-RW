@@ -2,6 +2,8 @@ package main;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 import chn.util.*;
 
@@ -78,6 +80,29 @@ public class VNDir {
 			res[0] = 60;
 		
 		return res;
+	}
+	
+	/**
+	 * Returns a list of configuration states to initialize the visual novel to
+	 * 
+	 * The order goes: fps, 
+	 * 
+	 * @return List of configuration states
+	 */
+	public List<Object> configure() {
+		List<Object> configArr = new ArrayList<Object>();
+		FileInput input = new FileInput(config.getAbsolutePath());
+		if(input.hasMoreLines()) {
+			String line = input.readLine();
+			int i = -1;
+			if(line.indexOf("fps") != -1) {
+				i = line.indexOf('=') + 1;
+				configArr.add(new Integer(Integer.parseInt(line.substring(i,i+1))));
+			}
+			else
+				
+		}
+		return configArr;
 	}
 	
 	/**

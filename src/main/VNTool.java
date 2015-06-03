@@ -41,22 +41,22 @@ public class VNTool {
 	public void load(Graphics g) throws SlickException {
 		while (!loaded) {
 			String line = file.readLine();
-			int fileI = 0;
-			char command = 0;
+			int lineI = 0;
+			char commandChar = 0;
 
-			while (command != 'd') {
-				command = line.charAt(fileI + 1);
+			while (commandChar != 'd') {
+				commandChar = line.charAt(lineI + 1);
 
-				switch (command) {
+				switch (commandChar) {
 				case 'i':
-					image = new Image(this.getStringArg(line, fileI));
-					fileI = fileI + this.getStringArg(line, fileI).length();
+					image = new Image(this.getStringArg(line, lineI));
+					lineI = lineI + this.getStringArg(line, lineI).length();
 					break;
 				case 's':
-					String path = this.getStringArg(line, fileI);
-					fileI = fileI + this.getStringArg(line, fileI).length();
-					bgSound.open(new File(path), this.getIntArg(line, fileI));
-					fileI = fileI + String.valueOf(this.getIntArg(line, fileI)).length();
+					String path = this.getStringArg(line, lineI);
+					lineI = lineI + this.getStringArg(line, lineI).length();
+					bgSound.open(new File(path), this.getIntArg(line, lineI));
+					lineI = lineI + String.valueOf(this.getIntArg(line, lineI)).length();
 				}
 				// g.drawImage(new Image(line.substring(line.indexOf('(', fileI)
 				// + 1, line.indexOf(',', fileI))), gc.getWidth()/2,

@@ -11,9 +11,7 @@ public class Main extends StateBasedGame {
 	public static final String gamename = "VN-RW";
 	//public static final int menu = 0; 
 	public static final int reader = 0;
-	public final static int FPS = myDir.configure()[0];
-	
-	//protected VNSound mySound = new VNSound(new File(""), true);
+	public final static int FPS = 60;
 	
 	public Main(String gamename) {
 		super(gamename);
