@@ -38,8 +38,7 @@ public class VNReader extends BasicGameState {
 	
 	public void render(GameContainer gc, StateBasedGame sbg, Graphics g) throws SlickException {
 		g.drawImage(bg, 0, 0);
-		g.drawRect(50, 50, 500, 500);
-		myTool.displayString("Uguu senpai am I cute? Uguu senpai am I cute? Uguu senpai am I cute? "
+		myTool.drawDialog("Uguu senpai am I cute? Uguu senpai am I cute? Uguu senpai am I cute? "
 				+ "Uguu senpai am I cute? Uguu senpai am I cute? Uguu senpai am I cute? ", 100, g);
 		
 		if(input.isMouseButtonDown(0))
