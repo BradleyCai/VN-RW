@@ -39,7 +39,7 @@ public class VNTool {
 	protected int i = 0; // The current character the VNTool is on
 	protected boolean loaded = false; // Whether the not the commands up until
 										// the "dialog" command are loaded
-	protected Color transparentGrey = new Color(240, 240, 240, 200);
+	protected Color transparentGrey = new Color(10, 10, 10, 200);
 
 	/**
 	 * Constructor for VNTool. Will take the GameContainer, StateBasedGame, and
@@ -67,11 +67,12 @@ public class VNTool {
 			String line = file.readLine();
 			int fileI = 0;
 			char command = 0;
+			this.clear(g);
 
 			while (command != 'd') {
 				command = line.charAt(fileI + 1);
 
-				switch (command) {
+				switch(command) {
 				case 'i':
 					image = new Image(this.getStringArg(line, fileI));
 					fileI = fileI + this.getStringArg(line, fileI).length();
@@ -213,7 +214,6 @@ public class VNTool {
 
 	public void clear(Graphics g) {
 		i = 0;
-		// g.clear();
 	}
 	// public boolean displayDone() { }
 }
