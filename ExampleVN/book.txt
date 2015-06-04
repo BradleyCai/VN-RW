@@ -1,1 +1,6 @@
-/d("Nothing to see here")
+\b("placeholder.jpg")\m("bgm.wav",70)\d("Welcome to the visual novel demo!")
+\d("Having background images and background music isn't all we can do here at VN-R...")
+\b("DNHS.jpg")\i("L.png")\s("Tuturu.wav",100)\d("We can also have images and sounds!")
+\d("Also since we're in java, our VN-R can run on any machine that has a JVM")
+\i("L.png")\d("Pretty cool huh?")
+\i("")\d("Thanks for checking out VN-R and have a great day")

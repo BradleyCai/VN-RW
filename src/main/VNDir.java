@@ -2,8 +2,6 @@ package main;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
 
 import chn.util.*;
 
@@ -19,7 +17,7 @@ public class VNDir {
 	protected File book, config;
 	protected String dir;
 	private final boolean USE_EXAMPLE = true;
-
+	
 	/**
 	 * Constructor, will instantiate with config and book file. If book.txt is
 	 * missing then it'll ask to find one. If config.txt is missing, it'll make
@@ -28,7 +26,6 @@ public class VNDir {
 	public VNDir() {
 		dir = System.getProperty("user.dir");
 		addSlash(dir);
-
 		// If true, then it'll use the example visual provided
 		if (USE_EXAMPLE)
 			dir = addSlash(System.getProperty("user.dir"))
@@ -55,7 +52,6 @@ public class VNDir {
 				e.printStackTrace();
 			}
 		}
-
 		System.out.println("Visual novel successfully loaded at " + dir);
 	}
 

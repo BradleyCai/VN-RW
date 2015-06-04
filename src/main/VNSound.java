@@ -117,8 +117,8 @@ public class VNSound {
 	/**
 	 * Will open a new file for a certain volume.
 	 * 
-	 * @param file
-	 * @param volume
+	 * @param file - File of audio to open
+	 * @param volume - Volume of audio to play from 100 to 0
 	 */
 	public void open(File file, float volume) {
 		try {
@@ -150,7 +150,9 @@ public class VNSound {
 	 * Starts playing the sound
 	 */
 	public void play() {
-		clip.start();
+		if(!(clip.isOpen()))
+			if(!(clip.isActive()))
+				clip.start();
 	}
 	
 	/**
