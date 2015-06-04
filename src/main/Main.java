@@ -1,27 +1,21 @@
 package main;
 
-import java.io.File;
-import java.util.List;
-
 import org.newdawn.slick.*;
 import org.newdawn.slick.state.*;
 
 public class Main extends StateBasedGame {
 
+	protected static VNDir myDir = new VNDir();
+	//protected static int[] config = myDir.configure();
+	
 	public static final String gamename = "VN-RW";
 	//public static final int menu = 0; 
 	public static final int reader = 0;
-	public static int FPS;
-	
-	protected VNDir myDir = new VNDir();
-	public List config = myDir.configure();
-	//protected VNSound mySound = new VNSound(new File(""), true);
+	public final static int FPS = 60;
 	
 	public Main(String gamename) {
 		super(gamename);
 		this.addState(new VNReader(reader, myDir));
-		
-		FPS = ((Integer)config.get(0)).intValue();
 	}
 	
 	public void initStatesList(GameContainer gc) throws SlickException {
